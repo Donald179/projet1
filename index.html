@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Made in Burkina - L'élégance africaine, fièrement Made in Burkina. Vêtements traditionnels et modernes confectionnés par des artisans burkinabés.">
+<title>Made in Burkina | L'élégance africaine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="script.js">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#accueil" class="logo">
+    <span class="logo-flag">🇧🇫</span>
+    Made in Burkina
+  </a>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#boutique">Boutique</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cart">
+    <button class="cart-btn" onclick="toggleCart()">
+      🛍 Panier <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">💻 DÉVELOPPEMENT WEB SUR MESURE</div>
+    <h1 class="hero-title">
+      Je crée des sites web <em>modernes</em> pour PME
+    </h1>
+    <p class="hero-subtitle">
+      Voici un exemple de site e-commerce que je peux concevoir pour votre activité.
+    </p>
+    <div class="hero-buttons">
+      <a href="#boutique" class="btn-primary">Découvrir la boutique</a>
+      <a href="#apropos" class="btn-outline">Notre histoire</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Défiler</div>
+</section>
+
+<!-- PATTERN BAR -->
+<div class="pattern-border"></div>
+
+<!-- AVANTAGES WEB -->
+<section class="web-benefits">
+  <div class="section-label" style="justify-content: center;">VOS AVANTAGES</div>
+  <h2 class="web-benefits-title">Ce que ce site peut faire pour vous</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">🛍️</div>
+      <div class="benefit-text">Présenter vos produits en ligne</div>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">🧲</div>
+      <div class="benefit-text">Attirer plus de clients</div>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-icon">📱</div>
+      <div class="benefit-text">Être visible sur téléphone</div>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERN BAR -->
+<div class="pattern-border"></div>
+
+<!-- CATÉGORIES -->
+<section class="section african-pattern">
+  <div class="section-label">Collections</div>
+  <h2 class="section-title">Explorez nos univers</h2>
+  <div class="categories-grid">
+    <a href="#boutique" class="cat-card" onclick="filterProducts('homme')">
+      <img src="homme1.jpg" alt="Mode homme africaine" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-tag">Collection</div>
+        <div class="cat-name">Hommes</div>
+        <div class="cat-count">24 créations</div>
+      </div>
+      <div class="cat-arrow">↗</div>
+    </a>
+    <a href="#boutique" class="cat-card" onclick="filterProducts('femme')">
+      <img src="tradi3.jpg" alt="Mode femme africaine" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-tag">Collection</div>
+        <div class="cat-name">Femmes</div>
+        <div class="cat-count">38 créations</div>
+      </div>
+      <div class="cat-arrow">↗</div>
+    </a>
+    <a href="#boutique" class="cat-card" onclick="filterProducts('enfant')">
+      <img src="images/enfant-tradi01.jpg" alt="Mode enfant africaine" loading="lazy">
+      <div class="cat-overlay">
+        <div class="cat-tag">Collection</div>
+        <div class="cat-name">Enfants</div>
+        <div class="cat-count">18 créations</div>
+      </div>
+      <div class="cat-arrow">↗</div>
+    </a>
+  </div>
+</section>
+
+<!-- BOUTIQUE -->
+<section id="boutique" class="section">
+  <div class="section-label">Boutique</div>
+  <h2 class="section-title">Nos créations</h2>
+  <div class="shop-filters">
+    <button class="filter-btn active" onclick="filterProducts('tous', this)">Tous</button>
+    <button class="filter-btn" onclick="filterProducts('homme', this)">Hommes</button>
+    <button class="filter-btn" onclick="filterProducts('femme', this)">Femmes</button>
+    <button class="filter-btn" onclick="filterProducts('enfant', this)">Enfants</button>
+    <button class="filter-btn" onclick="filterProducts('traditionnel', this)">Traditionnel</button>
+    <button class="filter-btn" onclick="filterProducts('moderne', this)">Moderne</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- POURQUOI NOUS -->
+<section id="pourquoi" class="section">
+  <div class="section-label" style="color:var(--or)">Nos engagements</div>
+  <h2 class="section-title" style="color:white">Pourquoi nous choisir ?</h2>
+  <div class="why-grid">
+    <div class="why-card fade-up">
+      <span class="why-icon">🎨</span>
+      <div class="why-title">Artisanat authentique</div>
+      <p class="why-text">Chaque pièce est confectionnée à la main par des artisans burkinabés passionnés, dans le respect des techniques traditionnelles.</p>
+    </div>
+    <div class="why-card fade-up">
+      <span class="why-icon">🌿</span>
+      <div class="why-title">Tissu naturel & local</div>
+      <p class="why-text">Nous utilisons exclusivement du Faso Dan Fani, du wax et des tissus naturels produits au Burkina Faso.</p>
+    </div>
+    <div class="why-card fade-up">
+      <span class="why-icon">✂️</span>
+      <div class="why-title">Sur mesure possible</div>
+      <p class="why-text">Vous souhaitez une création unique ? Nos artisans réalisent vos commandes personnalisées avec soin et précision.</p>
+    </div>
+    <div class="why-card fade-up">
+      <span class="why-icon">🚚</span>
+      <div class="why-title">Livraison rapide</div>
+      <p class="why-text">Livraison à domicile à Ouagadougou et dans toutes les villes du Burkina. Paiement à la livraison disponible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos" class="section">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img class="about-img-main" src="homme4.jpg" alt="Artisan burkinabé au travail" loading="lazy">
+      <img class="about-img-accent" src="tradi1.jpg" alt="Tissu Faso Dan Fani" loading="lazy">
+    </div>
+    <div class="about-content">
+      <div class="section-label" style="justify-content:flex-start">Notre histoire</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1.5rem;line-height:1.2">
+        L'âme du Burkina Faso, tissée dans chaque fil
+      </h2>
+      <div class="about-flag-bar"></div>
+      <p class="about-text">
+        Née en 2018 à Ouagadougou, <strong>Made in Burkina</strong> est bien plus qu'une marque de mode. C'est un hommage vibrant au génie créatif de nos artisans, à la richesse culturelle du peuple burkinabé et à la beauté intemporelle de nos traditions textiles.
+      </p>
+      <p class="about-text">
+        Nous travaillons avec plus de 40 tisserands, couturiers et artisans locaux, en les rémunérant équitablement et en valorisant leur expertise. Chaque vêtement raconte une histoire — celle d'un peuple fier, créatif et résilient.
+      </p>
+      <p class="about-text">
+        Du Faso Dan Fani aux imprimés wax les plus contemporains, nous faisons le pont entre l'héritage ancestral et la mode mondiale.
+      </p>
+      <div class="about-stat-row">
+        <div class="about-stat">
+          <strong>40+</strong>
+          <span>Artisans partenaires</span>
+        </div>
+        <div class="about-stat">
+          <strong>500+</strong>
+          <span>Clients satisfaits</span>
+        </div>
+        <div class="about-stat">
+          <strong>6</strong>
+          <span>Années d'excellence</span>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERN BAR -->
+<div class="pattern-border"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Parlons ensemble</h2>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-item">
+        <div class="contact-icon-wrap">📱</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+226 55 75 72 99</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon-wrap">📞</div>
+        <div>
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value">+226 54 51 14 37</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon-wrap">📍</div>
+        <div>
+          <div class="contact-label">Adresse</div>
+          <div class="contact-value">Ouagadougou, Burkina Faso<br><small style="color:var(--gris)">Secteur 17, Zogona</small></div>
+        </div>
+      </div>
+      <a href="https://wa.me/22655757299?text=Bonjour%2C%20je%20suis%20intéressé(e)%20par%20vos%20créations%20!" class="wa-big-btn" target="_blank">
+        💬 Commander via WhatsApp
+      </a>
+    </div>
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <div class="form-field">
+        <label>Votre nom</label>
+        <input type="text" placeholder="Ex: Aminata Traoré" required>
+      </div>
+      <div class="form-field">
+        <label>Téléphone / WhatsApp</label>
+        <input type="tel" placeholder="+226 00 00 00 00">
+      </div>
+      <div class="form-field">
+        <label>Sujet</label>
+        <select>
+          <option>Commande de vêtement</option>
+          <option>Commande sur mesure</option>
+          <option>Partenariat / Grossiste</option>
+          <option>Autre question</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="Décrivez votre demande..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">🇧🇫 Made in Burkina</span>
+      <p class="footer-desc">L'élégance africaine, tissée avec passion par des artisans burkinabés. Mode traditionnelle et contemporaine pour toute la famille.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">f</a>
+        <a href="https://wa.me/22655757299" class="social-btn" target="_blank">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Boutique</h4>
+      <ul>
+        <li><a href="#boutique">Collection Hommes</a></li>
+        <li><a href="#boutique">Collection Femmes</a></li>
+        <li><a href="#boutique">Collection Enfants</a></li>
+        <li><a href="#boutique">Sur mesure</a></li>
+        <li><a href="#boutique">Nouveautés</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informations</h4>
+      <ul>
+        <li><a href="#apropos">Notre histoire</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Guide des tailles</a></li>
+        <li><a href="#">Livraison & retours</a></li>
+        <li><a href="#">Conditions générales</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Paiement</h4>
+      <ul>
+        <li><a href="#">Paiement à la livraison</a></li>
+        <li><a href="#">Orange Money</a></li>
+        <li><a href="#">Moov Money</a></li>
+        <li><a href="#">Virement bancaire</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Made in Burkina. Tous droits réservés.</span>
+    <span class="footer-flag">🇧🇫 Fièrement burkinabé</span>
+  </div>
+</footer>
+
+<!-- MODAL PRODUIT -->
+<div class="modal-overlay" id="productModal" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modalInner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img class="modal-img" id="modalImg" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-category" id="modalCat"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="sizes-label">Tailles disponibles</div>
+      <div class="sizes" id="modalSizes"></div>
+      <div class="modal-actions">
+        <button class="btn-cart" style="background:var(--rouge);color:white;padding:14px;border:none;cursor:pointer;font-family:'Jost';font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:all .3s;border-radius:2px" onclick="addFromModal()">
+          🛍 Ajouter au panier
+        </button>
+        <a id="modalWa" href="#" target="_blank" class="wa-big-btn" style="margin-top:0">
+          💬 Commander via WhatsApp
+        </a>
+        <p style="font-size:0.75rem;color:var(--gris);text-align:center">✓ Paiement à la livraison disponible</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Mon panier</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Votre panier est vide 🛍</div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">0 FCFA</span>
+    </div>
+    <a href="https://wa.me/22655757299" target="_blank" class="wa-big-btn" onclick="sendCartWA()">
+      Commander via WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- OVERLAY CART -->
+<div id="cartOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2999" onclick="toggleCart()"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/22655757299?text=Bonjour%2C%20je%20veux%20commander%20!" class="wa-float" target="_blank" title="Commander via WhatsApp">
+  <div class="wa-float-pulse"></div>
+  💬
+</a>
+<script src="script.js"></script>
+</body>
+</html>
