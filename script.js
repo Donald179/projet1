@@ -64,7 +64,7 @@ let products = [
   },
   {
     id:10, name:"Tenu de gala femme", cat:"femme", type:"traditionnel",
-    price:"27 000", img:"images/femme-tradi03.jpg",
+    price:"27 000", img:"images/femme-tradi03.JPG",
     badge:"badge-new", badgeLabel:"Nouveau",
     desc:"Tenu pour femme, pour les grand sortie et cérémonies. Disponible en plusieurs modeles et couleurs.",
     sizes:["Sur mesure"]
